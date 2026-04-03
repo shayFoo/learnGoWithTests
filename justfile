@@ -5,4 +5,4 @@ ga:
     git add .
 
 gc message: 
-    git commit {{message}}
+    git commit -m {{message}}
