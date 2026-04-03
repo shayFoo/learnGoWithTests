@@ -6,3 +6,6 @@ ga:
 
 gc message: 
     git commit -m {{message}}
+
+lint:
+    golangci-lint run
