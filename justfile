@@ -12,3 +12,6 @@ gc message: lint
 
 gac message: ga 
     just gc "{{message}}"
+
+push: test
+    git push
