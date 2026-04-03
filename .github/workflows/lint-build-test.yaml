@@ -1,0 +1,22 @@
+name: lint-test
+on: push
+jobs:
+   lint-test:
+      runs-on: ubuntu-slim
+      steps:
+         - name: Checkout repo
+           uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+         - name: Setup Go
+           uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417
+           with:
+               go-version-file: ./go.mod
+         - name: Run Lint
+           uses: golangci/golangci-lint-action@1e7e51e771db61008b38414a730f564565cf7c20
+         - name: Run Test
+           run: make test-with-report
+         - name: Upload Coverage
+           uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+           with:  
+            path: report
+            retention-days: 1
+    

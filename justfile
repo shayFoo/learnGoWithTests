@@ -2,6 +2,9 @@ default: lint test
 test:
     make test
 
+test-with-report:
+    make test-with-report
+
 lint:
     make lint
 
