@@ -7,7 +7,7 @@ ga:
 gc message: 
     git commit -m '{{message}}'
 
-gam message: ga 
+gac message: ga 
     just gc "{{message}}"
 
 lint:
