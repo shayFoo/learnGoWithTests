@@ -1,14 +1,14 @@
 test:
-    go test
+    make test
+
+lint:
+    make lint
 
 ga:
     git add .
 
-gc message: 
+gc message: lint 
     git commit -m '{{message}}'
 
 gac message: ga 
     just gc "{{message}}"
-
-lint:
-    golangci-lint run

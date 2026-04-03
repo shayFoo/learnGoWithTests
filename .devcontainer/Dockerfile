@@ -6,7 +6,7 @@ ARG TARGETARCH
 
 RUN set -eux; \
     apt-get update; \
-    apt-get install -y --no-install-recommends ca-certificates curl; \
+    apt-get install -y --no-install-recommends ca-certificates curl just; \
     rm -rf /var/lib/apt/lists/*; \
     case "${TARGETARCH}" in \
     amd64) go_arch='amd64' ;; \
