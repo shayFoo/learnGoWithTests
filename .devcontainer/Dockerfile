@@ -20,7 +20,13 @@ RUN set -eux; \
     ln -sf /usr/local/go/bin/gofmt /usr/local/bin/gofmt; \
     rm -f /tmp/go.tar.gz
 
+
 ENV PATH="/usr/local/go/bin:${PATH}"
 ENV GOPATH="/home/vscode/go"
 
 RUN mkdir -p /home/vscode/go && chown -R vscode:vscode /home/vscode/go
+
+RUN set -eux; \
+    curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.11.4; \
+    echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> /home/vscode/.bashrc \
+    source /home/vscode/.bashrc
