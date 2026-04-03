@@ -1,17 +1,18 @@
+default: lint test
 test:
     make test
 
 lint:
     make lint
 
-ga:
-    git add .
+add *files:
+    if [ -z "{{files}}" ]; then git add .; else git add {{files}}; fi
 
-gc message: lint 
+commit message: lint 
     git commit -m '{{message}}'
 
-gac message: ga 
-    just gc "{{message}}"
+commit-all message: add
+    just commit "{{message}}"
 
 push: test
     git push
