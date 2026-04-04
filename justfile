@@ -12,6 +12,9 @@ lint:
 fmt:
     go fmt
 
+fix: 
+    go fix ./...
+
 add *files: fmt
     if [ -z "{{ files }}" ]; then git add .; else git add {{ files }}; fi
 
