@@ -12,8 +12,12 @@ jobs:
                go-version-file: ./go.mod
          - name: Run Lint
            uses: golangci/golangci-lint-action@1e7e51e771db61008b38414a730f564565cf7c20
+         - name: Install just
+           uses: taiki-e/install-action@a164de717a0ee9284c2d9db1c6016a4c339cd333
+           with:
+            tool: just
          - name: Run Test
-           run: make test-with-report
+           run: just test-with-report
          - name: Upload Coverage
            uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
            with:  

@@ -1,10 +1,14 @@
 default: lint test
 
 test:
-    make test
+    go test ./... -v
 
 test-with-report:
-    make test-with-report
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    mkdir -p report
+    go test -coverprofile=./report/coverage.out ./...
+    go tool cover -html=./report/coverage.out -o ./report/coverage.html
 
 lint:
     make lint
@@ -16,7 +20,13 @@ fix:
     go fix ./...
 
 add *files: fmt
-    if [ -z "{{ files }}" ]; then git add .; else git add {{ files }}; fi
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    if [ -z "{{ files }}" ]; then 
+        git add .; 
+    else 
+        git add {{ files }}; 
+    fi
 
 commit message: lint
     git commit -m '{{ message }}'
