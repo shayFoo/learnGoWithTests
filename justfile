@@ -1,4 +1,5 @@
 default: lint test
+
 test:
     make test
 
@@ -8,14 +9,17 @@ test-with-report:
 lint:
     make lint
 
-add *files:
-    if [ -z "{{files}}" ]; then git add .; else git add {{files}}; fi
+fmt:
+    go fmt
 
-commit message: lint 
-    git commit -m '{{message}}'
+add *files: fmt
+    if [ -z "{{ files }}" ]; then git add .; else git add {{ files }}; fi
+
+commit message: lint
+    git commit -m '{{ message }}'
 
 commit-all message: add
-    just commit "{{message}}"
+    just commit "{{ message }}"
 
 push: test
     git push
