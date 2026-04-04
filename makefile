@@ -1,7 +1,7 @@
 .PHONY: test lint
 
 test:
-	go test ./... 
+	go test ./... -v
 
 test-with-report:
 	mkdir -p report
