@@ -12,7 +12,7 @@ lint:
 fmt:
     go fmt
 
-fix: 
+fix:
     go fix ./...
 
 add *files: fmt
