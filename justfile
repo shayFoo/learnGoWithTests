@@ -11,7 +11,7 @@ test-with-report:
     go tool cover -html=./report/coverage.out -o ./report/coverage.html
 
 lint:
-    make lint
+    golangci-lint run
 
 fmt:
     go fmt
